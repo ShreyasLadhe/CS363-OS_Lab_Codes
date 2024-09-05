@@ -5,7 +5,7 @@ int main() {
     FILE *filePointer;
     char filename[100];
     char ch;
-    int wordCount = 0, charCount = 0;
+    int wcount = 0, ccount = 0;
     int inWord = 0;
 
     printf("Enter the name of the file to open: ");
@@ -19,11 +19,11 @@ int main() {
     }
 
     while ((ch = fgetc(filePointer)) != EOF) {
-        charCount++;
+        ccount++;
 
         if (isspace(ch)) {
             if (inWord) {
-                wordCount++;
+                wcount++;
                 inWord = 0;
             }
         } else {
@@ -32,11 +32,11 @@ int main() {
     }
 
     if (inWord) {
-        wordCount++;
+        wcount++;
     }
 
     fclose(filePointer);
-    printf("The file %s has %d characters and %d words.\n", filename, charCount, wordCount);
+    printf("The file %s has %d characters and %d words.\n", filename, ccount, wcount);
 
     return 0;
 }
